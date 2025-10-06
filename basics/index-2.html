@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="app">
+    <p class="text-4xl">{{ gettings }}</p>
+    <p class="text-4xl">Is it true: {{ isItTrue ? "it is." : "no it's not!" }}</p>
+
+    <!-- array -->
+    <p class="text-4xl">Array: {{ array }}</p>
+    <p class="text-4xl">Array: {{ array[0] }}</p>
+
+    <!-- object -->
+    <p class="text-4xl">Object: {{ obj }}</p>
+    <p class="text-4xl">Object: {{ obj.car }}</p>
+  </div>
+
+</body>
+
+<script>
+
+  const { createApp } = Vue;
+  createApp({
+    setup() {
+      const gettings = "HELLO WORLD!";
+      const isItTrue = true;
+      const array = ['one', 'two', 'three'];
+      const obj = {system: "linux"}
+
+      return {
+        gettings,
+        isItTrue,
+        array,
+        obj
+      }
+    }
+  }).mount('#app');
+
+</script>
+
+</html>

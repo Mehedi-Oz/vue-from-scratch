@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-slate-700">
+
+  <h1 class="text-5xl">testing vue</h1>
+
+
+  <div id="test">
+    <p>{{ author }} - {{ title }} - {{ age }}</p>
+
+    <button class="border border-gray-800" v-on:click="age++">Increase age</button>
+    <button class="border border-gray-800" ml-5 v-on:click="age--">Increase age</button>
+
+    <!-- <div @click="title = 'the title is changed!'">change title</div> -->
+
+    <!-- <div @click="changeTitle">change title</div> -->
+
+    <div @click="changeTitle('open-source')">change title</div>
+
+    <!-- conditional vue -->
+    <p v-if="isItTrue">{{ who}} - {{ doingWhat }}</p>
+
+    <!-- toggle books -->
+    <button @click="toggleShowBooks">
+      <span v-if="isItTrue">Hide Books</span>
+      <span v-else>Show Books</span>
+    </button>
+
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+  const test = Vue.createApp({
+    data() {
+      return {
+        title: "this is a title!",
+        author: "Hasan",
+        age: 20
+      }
+    },
+    // methods: {
+    //   changeTitle() {
+    //     this.title = "Let's go, title changed!"
+    //   }
+    // },
+    methods: {
+      changeTitle(title) {
+        this.title = title
+      }
+    },
+    data() {
+      return {
+        who: "I am",
+        doingWhat: "testing vue.",
+        isItTrue: true
+      }
+    },
+    methods: {
+      toggleShowBooks() {
+        this.isItTrue = !this.isItTrue
+      }
+    }
+
+  })
+
+  test.mount('#test')  
+</script>
+
+</html>
