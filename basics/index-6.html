@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - conditional rendering</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="conditionalRensdering">
+
+    <p>Your name is {{ user.name }}. Your age is {{ user.age }}.</p>
+
+    <!-- v-if/v-else is used for conditional rendering where elements are added or removed from the DOM based on the condition -->
+    <p v-if="user.age >= user.allowedAge"> You are good to go. </p>
+    <p v-if="user.name === 'Hasan'"> Welcome back, {{ user.name }} </p>
+    <p v-else-if="checkDept"> You are from CS dept. </p>
+    <p v-else> You are not allowed to enter! </p>
+
+    <!-- v-show is used for toggling the visibility of elements using CSS (display property, display:none), keeping them in the DOM -->
+    <p v-show='true'>Maha</p>
+    <p v-show="false">Hasan</p>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+      const user = ref({
+        name: "Hasan",
+        age: 12,
+        dept: "CS",
+        allowedAge: 18
+      })
+
+      function checkDept() {
+        return user.dept === "CS" ? true : false
+      }
+
+      return {
+        user, checkDept
+      }
+    }
+  }).mount("#conditionalRensdering")
+
+
+</script>
+
+</html>

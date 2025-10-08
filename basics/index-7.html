@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - looping</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="looping">
+
+    <!-- <p v-for="name in names">
+    <p v-if="name== 'Mehedi'">continue</p>
+    <p v-else>{{ name }}</p>
+    </p> -->
+
+    <div id="buildInDirectives" class="text-white p-4">
+
+      <ul v-for="(name, index) in names" :key="name" class="list-disc list-inside space-y-2">
+        <li v-if="name !== 'Mehedi'">
+          no: {{ index+1 }} - your name is {{ name }}.
+        </li>
+      </ul>
+
+      <hr>
+
+      <ul v-for="(car, index) in cars">
+        <p>{{ index }} - {{ car.brand }} - {{ car.color }}</p>
+      </ul>
+
+      <hr>
+
+      <ul v-for="(key, value, index) in user">
+        <li>{{index+1}} - {{ value }} - {{ key }}</li>
+      </ul>
+
+
+    </div>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+      const names = (['Muhammad', 'Mehedi', 'hasan'])
+
+      const cars = ref([
+        { brand: "supra", color: "gray" },
+        { brand: "hellcat", color: "balck" },
+        { brand: "dodge", color: "matte black" },
+      ])
+
+      const user = {
+        name: "hasan", dept: "cs", age: 10
+      }
+
+      return { names, cars, user }
+    }
+  }).mount("#looping")
+
+</script>
+
+</html>

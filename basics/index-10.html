@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - events and arguments</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="events">
+
+    <p>{{ name }}</p>
+
+    <br>
+    <hr><br>
+
+    <p v-on:click="updateName('HASAN', $event)">Click me</p><br>
+    <p v-on:click.right="updateName('HASAN', $event)">Right click me</p><br>
+    <p v-on:dblclick="updateName">Double click me</p>
+
+    <br>
+    <hr><br>
+
+    <form v-on:submit.prevent="handleForm">
+      <input class="bg-orange-700">
+      <button class="border border-gray-600 rounded" type="submit">Submit</button>
+    </form>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+
+      const name = ref("hasan")
+
+      function updateName(newName, event) {
+        name.value = newName
+        console.log(event)
+      }
+
+      function handleForm(event) {
+        // event.preventDefault()
+        console.log("form submitted")
+      }
+
+      return {
+        name, updateName, handleForm
+      }
+    }
+  }).mount("#events")
+
+</script>
+
+</html>

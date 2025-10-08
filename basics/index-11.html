@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - forms and v-model</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="forms_v-model">
+
+    <form action="" v-on:submit.prevent="formHandler">
+
+      <br><br>
+
+      <label class="text-white">First Name:</label>
+      <input type="text" class="bg-gray-800 text-white" v-model="formData.fName">
+
+      <br><br>
+
+      <label class="text-white">Last Name:</label>
+      <input type="text" class="bg-gray-800 text-white" v-model="formData.lName">
+
+      <br><br>
+
+      <label class="text-white">Age:</label>
+      <input type="text" class="bg-gray-800 text-white" v-model="formData.age">
+
+      <br><br>
+
+      <button type="submit" class="bg-blue-600">Submit Form</button>
+
+    </form>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+  createApp({
+    setup() {
+      const formData = ref({
+        fName: "",
+        lName: "",
+        age: ""
+      })
+
+      function formHandler() {
+        console.log(formData.value6)
+      }
+
+      return {
+        formData, formHandler
+      }
+    }
+  }).mount("#forms_v-model")
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - disable re-render</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="reRender">
+    <p>{{ name }}</p>
+    <p>{{ name }}</p>
+    {{ update() }}
+  </div>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+
+      let name = ref("hasan")
+
+      function update() {
+        setTimeout(() => {
+          name.value = "Maha"
+        }, 2000)
+      }
+
+      return {
+        name, update
+      }
+
+    }
+  }).mount("#reRender")
+</script>
+
+</html>

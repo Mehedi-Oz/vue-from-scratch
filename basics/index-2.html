@@ -26,20 +26,24 @@
 
     <!-- object -->
     <p class="text-4xl">Object: {{ obj }}</p>
-    <p class="text-4xl">Object: {{ obj.car }}</p>
+    <p class="text-4xl">Object: {{ obj.system }}</p>
   </div>
 
 </body>
 
+
+<!-- script -->
+<!-- composition API -->
 <script>
 
   const { createApp } = Vue;
   createApp({
     setup() {
-      const gettings = "HELLO WORLD!";
+      const today = new Date().toLocaleString();
+      const gettings = "HELLO WORLD! Today is " + today;
       const isItTrue = true;
       const array = ['one', 'two', 'three'];
-      const obj = {system: "linux"}
+      const obj = { system: "linux" }
 
       return {
         gettings,

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - working with events</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+
+  <div id="events">
+
+    <p>{{ name }}</p>
+
+    <br>
+    <hr><br>
+
+    <p v-on:click="updateName">Click me to change name</p><br>
+    <p v-on:dblclick="updateName">Click me to change name</p>
+
+    <br>
+    <hr><br>
+
+    <p class="box h-[200px] w-[200px] bg-green-700" v-on:mouseMove="getCoord">Hover Mouse to check the axis</p>
+
+    <p>x: {{ coord.x }}</p>
+    <p>y: {{ coord.y }}</p>
+
+  </div>
+
+</body>
+
+<!-- script -->
+<script>
+
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+
+      const name = ref("hasan")
+
+      const coord = ref(
+        {
+          x: 0,
+          y: 0
+        }
+      )
+
+      function updateName() {
+        name.value = "NEW NAME"
+      }
+
+      function getCoord() {
+        coord.value.x = event.clientX;
+        coord.value.y = event.clientY;
+      }
+
+      return {
+        name, updateName, coord, getCoord
+      }
+    }
+  }).mount("#events")
+
+</script>
+
+</html>

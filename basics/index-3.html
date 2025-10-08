@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>starting with vue - functions</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- vue cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+  <div id="methodsFunctions">
+    <p class="text-4xl text-white">{{ message() }}</p>
+  </div>
+</body>
+
+<!-- script -->
+<script>
+  const { createApp } = Vue
+  createApp({
+    setup() {
+      const message = () => "This is a message!"
+
+      return {
+        message
+      }
+    }
+  }).mount("#methodsFunctions")
+</script>
+
+</html>
